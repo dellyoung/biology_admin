@@ -59,7 +59,7 @@ const FORM_RULES = {
 const formData = reactive({
   type: 1,
   filter: false,
-  beginLine: 2,
+  beginLine: '2',
   fileList: [],
 });
 
@@ -89,7 +89,7 @@ const onSubmit = () => {
     try {
       const fileName = fileData.name?.split('.')?.[0];
       const data = await readerFile(fileData.raw);
-      changeExcel({ data, filter: formData.filter, fileName, beginLine: formData.beginLine });
+      changeExcel({ data, filter: formData.filter, fileName, beginLine: Number(formData.beginLine) });
       MessagePlugin.success('数据转换成功');
     } catch (e) {
       MessagePlugin.error(`数据转换失败`);
@@ -101,7 +101,7 @@ const onSubmit = () => {
 const onReset = () => {
   formData.type = 1;
   formData.filter = false;
-  formData.beginLine = 2;
+  formData.beginLine = '2';
   formData.fileList = [];
 };
 
@@ -123,9 +123,9 @@ const autoUpload = ref(false);
 function formatResponse(res) {
   function getCurrentDate(needTime = false) {
     const d = new Date();
-    let month = d.getMonth() + 1;
-    month = month < 10 ? `0${month}` : month;
-    const date = `${d.getFullYear()}-${month}-${d.getDate()}`;
+    const month = d.getMonth() + 1;
+    const monthnew = month < 10 ? `0${month}` : month;
+    const date = `${d.getFullYear()}-${monthnew}-${d.getDate()}`;
     const time = `${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
     if (needTime) return [date, time].join(' ');
     return date;
