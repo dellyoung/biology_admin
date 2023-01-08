@@ -13,7 +13,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
   // console.log('mode_mode', mode);
   const { VITE_BASE_URL } = loadEnv(mode, CWD);
   return {
-    base: mode === 'release' ? 'yj_biology_manage' : VITE_BASE_URL,
+    base: mode === 'release' ? '/yj_biology_manage/' : VITE_BASE_URL,
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
