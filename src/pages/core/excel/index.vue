@@ -80,6 +80,7 @@ const readerFile = (raw) => {
   });
 };
 
+// sub
 const onSubmit = () => {
   if (formData.fileList.length === 0) {
     MessagePlugin.error(`请先选择文件`);
