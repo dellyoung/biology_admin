@@ -3,7 +3,8 @@
     <t-menu :class="menuCls" :theme="theme" :value="active" :collapsed="collapsed" :default-expanded="defaultExpanded">
       <template #logo>
         <span v-if="showLogo" :class="`${prefix}-side-nav-logo-wrapper`" @click="goHome">
-          <component :is="getLogo()" :class="`${prefix}-side-nav-logo-${collapsed ? 't' : 'tdesign'}-logo`" />
+          <span class="title">怡杰专属控制台</span>
+          <!-- <component :is="getLogo()" :class="`${prefix}-side-nav-logo-${collapsed ? 't' : 'tdesign'}-logo`" /> -->
         </span>
       </template>
       <menu-content :nav-data="menu" />
@@ -124,4 +125,10 @@ const getLogo = () => {
 };
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.title {
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 500;
+}
+</style>
